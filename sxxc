@@ -1,0 +1,1544 @@
+do
+    local folderPath = "workspace"
+    if makefolder and not isfolder(folderPath) then
+        makefolder(folderPath)
+    end
+    local ksPath = folderPath .. "/killsay_messages.json"
+    if not (isfile and isfile(ksPath)) then
+        local messages = {
+            "( ◣( ◣( ◣( ◣_◢ )◢ )◢ )◢ )",
+            "take note my config, i am the semi professor",
+            "UKRAINE CAN PUT UP A FIGHT, BUT IN THE END, ITS CYA @ spotlight NNs",
+            "WHAT DO YOU THINK? YOU ARE A LEGENDARY? YOU THINKING WRONG 👑",
+            "turkish trust factor 👑👑",
+            "Get deal with little boy, so simple, dont approach me like that ever again 👑",
+            "(◣_◢) WELCOME TO SKEET SHOW (◣_◢)",
+            "You thought you were greatness? Give rethought.👑",
+            "what do you think? you are a legendary? you thinking wrong👑",
+            "god you are the god, then i'm irreligious",
+            "The secret is not to cheat in csgo, But to play like a cheater",
+            "Get dealt with little boy, so simple, dont approach members of my team like that ever again. 👑",
+            "IDOIT ALWAYS ASK ME UID ( ◣︵◢ )",
+            "HVH Legenden 2022 RIP Lil Peep & Xteancion & Juice Wrld",
+            "poutin hire me for war, when nato sees my cfg, they are rqing.",
+            "hey bro, you in comm? 👑",
+            "life is a game, steam level is how we keep the score",
+            "LUA ARE UPDATE all update its very curious",
+            "I am a star because ... My OG groups are Unmatched My ID is 3 Characters 8 8 OGUsers Reputation hvh/semirage boss",
+            "I go to work, make my bands, then i come home and set these NNs straight.",
+            "👑salami in the ###, make me ### in salami👑",
+            "You coming to kings castle asking for configs and qblock, saying novoline ain't this ain't that......they always saying in barbershop",
+            "look at the sky tonight hvh 2x2 mirage r n",
+            "well, i was inspect him to go tv, well, he said he not inject. well, if he is clean, well he is good (gamesense)",
+            "If it's fight vs nns ,well we know the out come👑",
+            "👑 littel clown 👑",
+            "When i'm play MM i', play for win don't scare for spin, i inject rage 👑",
+            "you think you won, but after game, im drive away ir my lamborgigni to mcdonalds to order chesburger👑",
+            "what its outside? new cheat?",
+            "👑 lamborgigni owners only 👑",
+            "let my enemies be strong and brave so i do not feel remorse to defeat them...",
+            "welcome to class u're ready for lesson?",
+            "We are always onetap cracked bots never want the listens",
+            "Paste or get Pasted. . .",
+            "one day, you will be forgot. but not me. my semirag capability will go down in the history books for young to learn 👑",
+            "main new= can buy.. hvh win? dont think im can, im road rage 👑",
+            "👑justice served👑",
+            "👑All Family in novo👑",
+            "when ukraine strike back its hvh",
+            "try to test me? my middle name is genuine pinn 👑",
+            "dont be mad you lost, be mad you missed your chance to impress the king 👑",
+            "SINLYXE ABUSER 👑",
+            "No OG ID? Dont add me",
+            "👑awall to lose vs iniuria👑",
+            "👑 isaac newton once said: ''Here how to desync: F = (G * m1 * m2) / d^2'' ... Let that sync in...",
+            "📊🔹🔹99% of pasters stop dumping right as they are about to hit temple..."
+        }
+        local json = '{\n "messages": [\n'
+        for i, msg in ipairs(messages) do
+            local escaped = msg:gsub('\\', '\\\\'):gsub('"', '\\"')
+            json = json .. ' "' .. escaped .. '"'
+            if i < #messages then json = json .. ',' end
+            json = json .. '\n'
+        end
+        json = json .. ' ]\n}\n'
+        local success, err = pcall(writefile, ksPath, json)
+        if success then
+            warn("[Jujustand] Created default killsay_messages.json")
+        else
+            warn("[Jujustand] Failed to create killsay file → " .. tostring(err))
+        end
+    end
+    local lyricsPath = folderPath .. "/lyrics.json"
+    if not (isfile and isfile(lyricsPath)) then
+        local defaultLyrics = {
+            "I'm just a kid and life is a nightmare",
+            "I don't know what the future holds",
+            "But I know that I'm not scared",
+            "I'm just a kid and life is a nightmare",
+            "Whoa-oh-oh, whoa-oh-oh",
+            "I'm just a kid and life is a nightmare",
+            "Edit this file → workspace/lyrics.json",
+            "Add as many lines as you want"
+        }
+        local json = '{\n "lines": [\n'
+        for i, line in ipairs(defaultLyrics) do
+            local escaped = line:gsub('\\', '\\\\'):gsub('"', '\\"')
+            json = json .. ' "' .. escaped .. '"'
+            if i < #defaultLyrics then json = json .. ',' end
+            json = json .. '\n'
+        end
+        json = json .. ' ]\n}\n'
+        local success, err = pcall(writefile, lyricsPath, json)
+        if success then
+            warn("[Jujustand] Created default lyrics.json")
+        else
+            warn("[Jujustand] Failed to create lyrics file → " .. tostring(err))
+        end
+    end
+    local commandsPath = folderPath .. "/commands.json"
+    if not (isfile and isfile(commandsPath)) then
+        local json = '{\n  "bring_cmd": "b",\n  "down_cmd": "down",\n  "loopkill_cmd": "loopkill",\n  "protect_cmd": "protect",\n  "protect2_cmd": "protect2",\n  "aura_cmd": "a",\n  "reset_cmd": "reset",\n  "cashdrop_cmd": "cashdrop",\n  "rejoin_cmd": "rejoin",\n  "say_cmd": "say",\n  "void_cmd": "void",\n  "fakepos_cmd": "fakepos",\n  "fakepos_alias": "fp",\n  "velocity_cmd": "velocity",\n  "vel_cmd": "vel",\n  "nd_cmd": "nd",\n  "sender_cmd": "sender",\n  "desync_cmd": "desync",\n  "animationid_cmd": "animationid",\n  "animationsp_cmd": "animationsp",\n  "animation_cmd": "animation",\n  "stand_cmd": "s",\n  "stand_strafe_cmd": "st",\n  "pos_cmd": "pos",\n  "saylogs_cmd": "saylogs",\n  "killsay_cmd": "killsay",\n  "stomp_cmd": "stomp",\n  "here_cmd": "here",\n  "reloadkillsay_cmd": "reloadkillsay",\n  "lyrics_cmd": "lyrics",\n  "prefix_cmd": "prefix"\n}\n'
+        local success, err = pcall(writefile, commandsPath, json)
+        if success then
+            warn("[Jujustand] Created default commands.json")
+        else
+            warn("[Jujustand] Failed to create commands file → " .. tostring(err))
+        end
+    end
+    local saylogsPath = folderPath .. "/saylogs.json"
+    if not (isfile and isfile(saylogsPath)) then
+        local json = '{\n'
+            .. ' "bring_log": "Bringing %s 👑",\n'
+            .. ' "down_log": "Downing %s 👑",\n'
+            .. ' "loopkill_disable": "Loopkill → disabled 👑",\n'
+            .. ' "loopkill_enable": "Loopkilling %s 👑",\n'
+            .. ' "protect_disable": "Protection disabled → Auto Stomp off 👑",\n'
+            .. ' "protect_enable": "Protecting %s 👑🛡️ (revenge stomp on attackers)",\n'
+            .. ' "protect2_enable": "Protecting %s 👑🛡️ (untarget on KO)",\n'
+            .. ' "protect_respawn": "%s respawned → protection active 👑",\n'
+            .. ' "protect_hit": "%s hit master → targeting for revenge 👑⚔️",\n'
+            .. ' "protect_stomp_on": "Enemy who hit master is down → stomp ON 👑🥾",\n'
+            .. ' "protect_stomp_off": "Enemy recovered or dead → stomp OFF 👑",\n'
+            .. ' "protect_eliminated": "Enemy eliminated → cleared rage target 👑",\n'
+            .. ' "protect_left": "%s left → protection paused 👑",\n'
+            .. ' "cashdrop_enable_amount": "Cashdrop enabled → $%s 👑",\n'
+            .. ' "cashdrop_enable": "Cashdrop enabled → $%s 👑",\n'
+            .. ' "cashdrop_disable": "Cashdrop → disabled 👑",\n'
+            .. ' "rejoin": "Rejoining... 🌠",\n'
+            .. ' "saylogs_enable": "Say logs → enabled 👑",\n'
+            .. ' "saylogs_disable": "Say logs → disabled 👑",\n'
+            .. ' "killsay_enable": " killsay enabled 👑",\n'
+            .. ' "killsay_disable": " killsay disabled 👑",\n'
+            .. ' "stand_active": "Standing mode active – protection stopped 👑",\n'
+            .. ' "here_tp": "Teleported %s studs; %s 👑",\n'
+            .. ' "reset_start": "Resetting everything... dying & respawning 👑",\n'
+            .. ' "reset_complete": "Reset complete → standing again 👑",\n'
+            .. ' "lyrics_start": "Lyrics started (%s lines every %s s) 👑",\n'
+            .. ' "lyrics_stop": "Lyrics stopped 👑",\n'
+            .. ' "lyrics_reload": "Lyrics reloaded from file (%s lines) 👑",\n'
+            .. ' "lyrics_usage": "Usage: %slyrics on / off / reload 👑",\n'
+            .. ' "prefix_current": "Current prefix: %s %sprefix [newprefix]",\n'
+            .. ' "prefix_too_long": "Prefix too long (max 8 chars recommended) 👑",\n'
+            .. ' "prefix_changed": "Command prefix changed to: %s 👑 (saved to file)",\n'
+            .. ' "player_not_found": "Player not found",\n'
+            .. ' "master_not_found": "Can\'t find master or no HRP",\n'
+            .. ' "desync_toggle": "Desync combo (void + fakepos + nd + sender + velocity) → %s 👑",\n'
+            .. ' "fakepos_toggle": "Fake Position → %s 👑",\n'
+            .. ' "velocity_toggle": "Velocity Desync → %s 👑",\n'
+            .. ' "nd_toggle": "Network Desync → %s 👑",\n'
+            .. ' "sender_toggle": "Sender Rate → %s 👑",\n'
+            .. ' "stomp_toggle": "Auto Stomp → %s 👑",\n'
+            .. ' "fakepos_failed": "Failed to toggle Fake Position 👑 (error: %s)",\n'
+            .. ' "velocity_not_found": "Velocity Desync toggle not found in Anti 👑",\n'
+            .. ' "nd_not_found": "Network Desync toggle not found in Anti 👑",\n'
+            .. ' "sender_not_found": "Sender Rate toggle not found in Anti 👑",\n'
+            .. ' "fakepos_not_found": "Couldn\'t find \'Fake Position\' toggle in Anti/Misc 👑 (check exact name in menu)",\n'
+            .. ' "juju_missing": "Juju API missing → can\'t toggle fakepos 👑",\n'
+            .. ' "killsay_reload": " killsay messages reloaded from file 👑"\n'
+            .. '}\n'
+        local success, err = pcall(writefile, saylogsPath, json)
+        if success then
+            warn("[Jujustand] Created default saylogs.json")
+        else
+            warn("[Jujustand] Failed to create saylogs file → " .. tostring(err))
+        end
+    end
+end
+local juju = juju
+if not juju then return end
+local SETTINGS = {
+    AUTHORIZED_USER = "DEFAULT",
+    HOVER_OFFSET = Vector3.new(0, 3.5, 0),
+    RETURN_OFFSET = Vector3.new(-5, 0, 0),
+    GRAB_SETTLE = 0.3,
+    DROP_SETTLE = 0.3,
+    COMMAND_COOLDOWN = 0.45,
+    AURA_DISTANCE = 4,
+    AURA_SPEED = 11,
+    DEFAULT_EMOTE_ID = 81976972987144,
+    DEFAULT_ANIM_SPEED = 2,
+    PROTECT_DAMAGE_THRESHOLD = 5,
+}
+local COMMAND_PREFIX = "." 
+local PREFIX_FILE = "workspace/command_prefix.json"
+local function load_prefix()
+    if not isfile or not isfile(PREFIX_FILE) then return false end
+    local success, content = pcall(readfile, PREFIX_FILE)
+    if not success then return false end
+    local prefix_match = content:match('"prefix"%s*:%s*"([^"]+)"')
+    if prefix_match and prefix_match ~= "" then
+        COMMAND_PREFIX = prefix_match
+        return true
+    end
+    return false
+end
+local function save_prefix()
+    local json = '{\n "prefix": "' .. COMMAND_PREFIX:gsub('"', '\\"') .. '"\n}\n'
+    pcall(function()
+        if makefolder and not isfolder("workspace") then makefolder("workspace") end
+        writefile(PREFIX_FILE, json)
+    end)
+end
+local function patternEscape(str)
+    return (str:gsub("[%^%$%(%)%%%.%[%]%*%+%-%?]", "%%%0"))
+end
+local cashdrop = false
+local cashdrop_amount = "15000"
+local last_cashdrop_time = 0
+local CASH_DROP_INTERVAL = 1.4
+local whitelist = {}
+whitelist[SETTINGS.AUTHORIZED_USER] = true
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local TextChatService = game:GetService("TextChatService")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local TeleportService = game:GetService("TeleportService")
+local LocalPlayer = Players.LocalPlayer
+local MainEvent = ReplicatedStorage:WaitForChild("MainEvent", 5)
+local lockedTarget = nil
+local downTarget = nil
+local loopkillTarget = nil
+local protectTarget = nil
+local protectMode = 1
+local bringonly = false
+local auraFollow = false
+local commandSender = nil
+local grabbed = false
+local grabConnection = nil
+local connections = {}
+local auraAngle = 0
+local currentAnimTrack = nil
+local savedAnimation = {
+    id = SETTINGS.DEFAULT_EMOTE_ID,
+    speed = SETTINGS.DEFAULT_ANIM_SPEED,
+}
+local stand_active = false
+local stand_strafing = false
+local stand_position = 2
+local say_logs_enabled = true
+local killsay_enabled = false
+local lastDamagerWhoHitMaster = nil
+local lastHealth = {}
+local lastStompState = false
+local lyrics_active = false
+local lyrics_lines = {}
+local lyrics_index = 1
+local LYRICS_DELAY = 3
+local LYRICS_FILE = "workspace/lyrics.json"
+local function load_lyrics()
+    lyrics_lines = {}
+    if not isfile or not isfile(LYRICS_FILE) then
+        lyrics_lines = {"lyrics.json missing - create it in workspace"}
+        return
+    end
+    local success, content = pcall(readfile, LYRICS_FILE)
+    if not success then
+        lyrics_lines = {"Failed to read lyrics.json"}
+        return
+    end
+    local temp = {}
+    for captured in content:gmatch('"(.-)"') do
+        if captured ~= "lines" and captured ~= ":" and captured ~= "," and captured ~= "[" and captured ~= "]" and captured ~= "{" and captured ~= "}" then
+            table.insert(temp, captured)
+        end
+    end
+    if #temp > 0 then
+        lyrics_lines = temp
+    else
+        lyrics_lines = {"lyrics.json has no valid lines"}
+    end
+end
+load_lyrics()
+local KILLSAY_FILE = "workspace/killsay_messages.json"
+local killsay_words = {}
+local function load_killsay_messages()
+    if not isfile or not isfile(KILLSAY_FILE) then
+        killsay_words = {
+            "you got owned 👑",
+            "better luck next time nn",
+            "(◣_◢) get rekt (◣_◢)"
+        }
+        return
+    end
+    local success, content = pcall(readfile, KILLSAY_FILE)
+    if not success then return end
+    local messages = {}
+    for msg in content:gmatch('"(.-)"') do
+        if msg ~= "messages" and msg ~= ":" and msg ~= "," and msg ~= "[" and msg ~= "]" and msg ~= "{" and msg ~= "}" then
+            table.insert(messages, msg)
+        end
+    end
+    if #messages > 0 then
+        killsay_words = messages
+    end
+end
+load_killsay_messages()
+local ANIM_FILE_PATH = "workspace/jujustand_anim.json"
+local function save_settings()
+    local data = {
+        animation = { id = savedAnimation.id, speed = savedAnimation.speed },
+        say_logs_enabled = say_logs_enabled
+    }
+    local json = '{\n'
+    json = json .. ' "animation": {\n'
+    json = json .. ' "id": ' .. (data.animation.id and tostring(data.animation.id) or "null") .. ',\n'
+    json = json .. ' "speed": ' .. (data.animation.speed and tostring(data.animation.speed) or "null") .. '\n'
+    json = json .. ' },\n'
+    json = json .. ' "stand_position": ' .. tostring(stand_position) .. ',\n'
+    json = json .. ' "say_logs_enabled": ' .. tostring(say_logs_enabled) .. '\n'
+    json = json .. '}\n'
+    pcall(function()
+        if makefolder and not isfolder("workspace") then makefolder("workspace") end
+        writefile(ANIM_FILE_PATH, json)
+    end)
+end
+local function load_settings()
+    if not isfile or not isfile(ANIM_FILE_PATH) then return false end
+    local success, content = pcall(readfile, ANIM_FILE_PATH)
+    if not success then return false end
+    local id_match = content:match('"id"%s*:%s*([%d%.%-null]+)')
+    local speed_match = content:match('"speed"%s*:%s*([%d%.%-null]+)')
+    local id = (id_match and id_match ~= "null") and tonumber(id_match) or nil
+    local speed = (speed_match and speed_match ~= "null") and tonumber(speed_match) or nil
+    if id then savedAnimation.id = id end
+    if speed then savedAnimation.speed = speed end
+    local saylogs_match = content:match('"say_logs_enabled"%s*:%s*(true|false)')
+    if saylogs_match then say_logs_enabled = (saylogs_match == "true") end
+    local pos_match = content:match('"stand_position"%s*:%s*([%d]+)')
+    if pos_match then stand_position = tonumber(pos_match) end
+    return true
+end
+local COMMANDS_FILE = "workspace/commands.json"
+local bring_cmd = "b"
+local down_cmd = "down"
+local loopkill_cmd = "loopkill"
+local protect_cmd = "protect"
+local protect2_cmd = "protect2"
+local aura_cmd = "a"
+local reset_cmd = "reset"
+local cashdrop_cmd = "cashdrop"
+local rejoin_cmd = "rejoin"
+local say_cmd = "say"
+local void_cmd = "void"
+local fakepos_cmd = "fakepos"
+local fakepos_alias = "fp"
+local velocity_cmd = "velocity"
+local vel_cmd = "vel"
+local nd_cmd = "nd"
+local sender_cmd = "sender"
+local desync_cmd = "desync"
+local animationid_cmd = "animationid"
+local animationsp_cmd = "animationsp"
+local animation_cmd = "animation"
+local stand_cmd = "s"
+local stand_strafe_cmd = "st"
+local pos_cmd = "pos"
+local saylogs_cmd = "saylogs"
+local killsay_cmd = "killsay"
+local stomp_cmd = "stomp"
+local here_cmd = "here"
+local reloadkillsay_cmd = "reloadkillsay"
+local lyrics_cmd = "lyrics"
+local prefix_cmd = "prefix"
+local function load_commands()
+    if not isfile or not isfile(COMMANDS_FILE) then return false end
+    local success, content = pcall(readfile, COMMANDS_FILE)
+    if not success then return false end
+    bring_cmd = content:match('"bring_cmd"%s*:%s*"([^"]+)"') or bring_cmd
+    down_cmd = content:match('"down_cmd"%s*:%s*"([^"]+)"') or down_cmd
+    loopkill_cmd = content:match('"loopkill_cmd"%s*:%s*"([^"]+)"') or loopkill_cmd
+    protect_cmd = content:match('"protect_cmd"%s*:%s*"([^"]+)"') or protect_cmd
+    protect2_cmd = content:match('"protect2_cmd"%s*:%s*"([^"]+)"') or protect2_cmd
+    aura_cmd = content:match('"aura_cmd"%s*:%s*"([^"]+)"') or aura_cmd
+    reset_cmd = content:match('"reset_cmd"%s*:%s*"([^"]+)"') or reset_cmd
+    cashdrop_cmd = content:match('"cashdrop_cmd"%s*:%s*"([^"]+)"') or cashdrop_cmd
+    rejoin_cmd = content:match('"rejoin_cmd"%s*:%s*"([^"]+)"') or rejoin_cmd
+    say_cmd = content:match('"say_cmd"%s*:%s*"([^"]+)"') or say_cmd
+    void_cmd = content:match('"void_cmd"%s*:%s*"([^"]+)"') or void_cmd
+    fakepos_cmd = content:match('"fakepos_cmd"%s*:%s*"([^"]+)"') or fakepos_cmd
+    fakepos_alias = content:match('"fakepos_alias"%s*:%s*"([^"]+)"') or fakepos_alias
+    velocity_cmd = content:match('"velocity_cmd"%s*:%s*"([^"]+)"') or velocity_cmd
+    vel_cmd = content:match('"vel_cmd"%s*:%s*"([^"]+)"') or vel_cmd
+    nd_cmd = content:match('"nd_cmd"%s*:%s*"([^"]+)"') or nd_cmd
+    sender_cmd = content:match('"sender_cmd"%s*:%s*"([^"]+)"') or sender_cmd
+    desync_cmd = content:match('"desync_cmd"%s*:%s*"([^"]+)"') or desync_cmd
+    animationid_cmd = content:match('"animationid_cmd"%s*:%s*"([^"]+)"') or animationid_cmd
+    animationsp_cmd = content:match('"animationsp_cmd"%s*:%s*"([^"]+)"') or animationsp_cmd
+    animation_cmd = content:match('"animation_cmd"%s*:%s*"([^"]+)"') or animation_cmd
+    stand_cmd = content:match('"stand_cmd"%s*:%s*"([^"]+)"') or stand_cmd
+    stand_strafe_cmd = content:match('"stand_strafe_cmd"%s*:%s*"([^"]+)"') or stand_strafe_cmd
+    pos_cmd = content:match('"pos_cmd"%s*:%s*"([^"]+)"') or pos_cmd
+    saylogs_cmd = content:match('"saylogs_cmd"%s*:%s*"([^"]+)"') or saylogs_cmd
+    killsay_cmd = content:match('"killsay_cmd"%s*:%s*"([^"]+)"') or killsay_cmd
+    stomp_cmd = content:match('"stomp_cmd"%s*:%s*"([^"]+)"') or stomp_cmd
+    here_cmd = content:match('"here_cmd"%s*:%s*"([^"]+)"') or here_cmd
+    reloadkillsay_cmd = content:match('"reloadkillsay_cmd"%s*:%s*"([^"]+)"') or reloadkillsay_cmd
+    lyrics_cmd = content:match('"lyrics_cmd"%s*:%s*"([^"]+)"') or lyrics_cmd
+    prefix_cmd = content:match('"prefix_cmd"%s*:%s*"([^"]+)"') or prefix_cmd
+    return true
+end
+local SAYLOGS_FILE = "workspace/saylogs.json"
+local saylogs = {}
+local function load_saylogs()
+    if not isfile or not isfile(SAYLOGS_FILE) then return false end
+    local success, content = pcall(readfile, SAYLOGS_FILE)
+    if not success then return false end
+    saylogs.bring_log = content:match('"bring_log"%s*:%s*"([^"]+)"') or "Bringing %s 👑"
+    saylogs.down_log = content:match('"down_log"%s*:%s*"([^"]+)"') or "Downing %s 👑"
+    saylogs.loopkill_disable = content:match('"loopkill_disable"%s*:%s*"([^"]+)"') or "Loopkill → disabled 👑"
+    saylogs.loopkill_enable = content:match('"loopkill_enable"%s*:%s*"([^"]+)"') or "Loopkilling %s 👑"
+    saylogs.protect_disable = content:match('"protect_disable"%s*:%s*"([^"]+)"') or "Protection disabled 👑"
+    saylogs.protect_enable = content:match('"protect_enable"%s*:%s*"([^"]+)"') or "Protecting %s 👑)"
+    saylogs.protect2_enable = content:match('"protect2_enable"%s*:%s*"([^"]+)"') or "Protecting (stomp off) %s 👑)"
+    saylogs.protect_respawn = content:match('"protect_respawn"%s*:%s*"([^"]+)"') or "%s respawned 👑"
+    saylogs.protect_hit = content:match('"protect_hit"%s*:%s*"([^"]+)"') or "%s hit master → DEATH UPPON ENEMY 👑"
+    saylogs.protect_stomp_on = content:match('"protect_stomp_on"%s*:%s*"([^"]+)"') or "Enemy down 👑"
+    saylogs.protect_stomp_off = content:match('"protect_stomp_off"%s*:%s*"([^"]+)"') or "enemy dead 👑"
+    saylogs.protect_eliminated = content:match('"protect_eliminated"%s*:%s*"([^"]+)"') or "Enemy eliminated 👑"
+    saylogs.protect_left = content:match('"protect_left"%s*:%s*"([^"]+)"') or "%s left → searching 👑"
+    saylogs.cashdrop_enable_amount = content:match('"cashdrop_enable_amount"%s*:%s*"([^"]+)"') or "Cashdrop enabled → $%s 👑"
+    saylogs.cashdrop_enable = content:match('"cashdrop_enable"%s*:%s*"([^"]+)"') or "Cashdrop enabled → $%s 👑"
+    saylogs.cashdrop_disable = content:match('"cashdrop_disable"%s*:%s*"([^"]+)"') or "Cashdrop → disabled 👑"
+    saylogs.rejoin = content:match('"rejoin"%s*:%s*"([^"]+)"') or "Rejoining... 🌠"
+    saylogs.saylogs_enable = content:match('"saylogs_enable"%s*:%s*"([^"]+)"') or "Say logs → enabled 👑"
+    saylogs.saylogs_disable = content:match('"saylogs_disable"%s*:%s*"([^"]+)"') or "Say logs → disabled 👑"
+    saylogs.killsay_enable = content:match('"killsay_enable"%s*:%s*"([^"]+)"') or " killsay enabled 👑"
+    saylogs.killsay_disable = content:match('"killsay_disable"%s*:%s*"([^"]+)"') or " killsay disabled 👑"
+    saylogs.stand_active = content:match('"stand_active"%s*:%s*"([^"]+)"') or "Standing mode active – protection stopped 👑"
+    saylogs.here_tp = content:match('"here_tp"%s*:%s*"([^"]+)"') or "Teleported %s studs; %s 👑"
+    saylogs.reset_start = content:match('"reset_start"%s*:%s*"([^"]+)"') or "Resetting ♋"
+    saylogs.reset_complete = content:match('"reset_complete"%s*:%s*"([^"]+)"') or "Reset complete 👑"
+    saylogs.lyrics_start = content:match('"lyrics_start"%s*:%s*"([^"]+)"') or "Lyrics started (%s lines every %s s) 👑"
+    saylogs.lyrics_stop = content:match('"lyrics_stop"%s*:%s*"([^"]+)"') or "Lyrics stopped 👑"
+    saylogs.lyrics_reload = content:match('"lyrics_reload"%s*:%s*"([^"]+)"') or "Lyrics reloaded from file (%s lines) 👑"
+    saylogs.lyrics_usage = content:match('"lyrics_usage"%s*:%s*"([^"]+)"') or "Usage: %slyrics on / off / reload 👑"
+    saylogs.prefix_current = content:match('"prefix_current"%s*:%s*"([^"]+)"') or "Current prefix: %s %sprefix [newprefix]"
+    saylogs.prefix_too_long = content:match('"prefix_too_long"%s*:%s*"([^"]+)"') or "Prefix too long (max 8 chars recommended) 👑"
+    saylogs.prefix_changed = content:match('"prefix_changed"%s*:%s*"([^"]+)"') or "Command prefix changed to: %s 👑 (saved to file)"
+    saylogs.player_not_found = content:match('"player_not_found"%s*:%s*"([^"]+)"') or "Player not found"
+    saylogs.master_not_found = content:match('"master_not_found"%s*:%s*"([^"]+)"') or "Can't find master or no HRP"
+    saylogs.desync_toggle = content:match('"desync_toggle"%s*:%s*"([^"]+)"') or " Desync → %s 👑"
+    saylogs.fakepos_toggle = content:match('"fakepos_toggle"%s*:%s*"([^"]+)"') or "Fake Position → %s 👑"
+    saylogs.velocity_toggle = content:match('"velocity_toggle"%s*:%s*"([^"]+)"') or "Velocity Desync → %s 👑"
+    saylogs.nd_toggle = content:match('"nd_toggle"%s*:%s*"([^"]+)"') or "Network Desync → %s 👑"
+    saylogs.sender_toggle = content:match('"sender_toggle"%s*:%s*"([^"]+)"') or "Sender Rate → %s 👑"
+    saylogs.stomp_toggle = content:match('"stomp_toggle"%s*:%s*"([^"]+)"') or "Auto Stomp → %s 👑"
+    saylogs.fakepos_failed = content:match('"fakepos_failed"%s*:%s*"([^"]+)"') or "Failed to toggle Fake Position 👑 (error: %s)"
+    saylogs.velocity_not_found = content:match('"velocity_not_found"%s*:%s*"([^"]+)"') or "Velocity Desync toggle not found in Anti 👑"
+    saylogs.nd_not_found = content:match('"nd_not_found"%s*:%s*"([^"]+)"') or "Network Desync toggle not found in Anti 👑"
+    saylogs.sender_not_found = content:match('"sender_not_found"%s*:%s*"([^"]+)"') or "Sender Rate toggle not found in Anti 👑"
+    saylogs.fakepos_not_found = content:match('"fakepos_not_found"%s*:%s*"([^"]+)"') or "Couldn't find 'Fake Position' toggle in Anti/Misc 👑"
+    saylogs.juju_missing = content:match('"juju_missing"%s*:%s*"([^"]+)"') or "Juju API missing → can't toggle fakepos 👑"
+    saylogs.killsay_reload = content:match('"killsay_reload"%s*:%s*"([^"]+)"') or " killsay messages reloaded from file 👑"
+    return true
+end
+local function setAutoStomp(state)
+    local el = juju.find_element and (
+        juju.find_element("utility", "auto stomp") or
+        juju.find_element("utility", "auto_stomp") or
+        juju.find_element("utility", "autostomp")
+    )
+    if not el then return false end
+    local current = el.get_toggle and el.get_toggle()
+    if current == state then return true end
+    pcall(function()
+        el:set_toggle(state)
+    end)
+    return true
+end
+local function send_chat(msg)
+    local channel = TextChatService.TextChannels:FindFirstChild("RBXGeneral")
+    if channel then channel:SendAsync(msg) end
+end
+local function is_authorized(plr)
+    if not plr then return false end
+    local lower = SETTINGS.AUTHORIZED_USER:lower()
+    return plr.Name:lower():find(lower,1,true) or plr.DisplayName:lower():find(lower,1,true)
+end
+local function is_whitelisted(plr)
+    if not plr then return false end
+    return whitelist[plr.Name] or is_authorized(plr)
+end
+local function find_player(fragment)
+    fragment = fragment:lower()
+    for _, plr in Players:GetPlayers() do
+        if plr ~= LocalPlayer then
+            if plr.Name:lower():find(fragment,1,true) or plr.DisplayName:lower():find(fragment,1,true) then
+                return plr
+            end
+        end
+    end
+    return nil
+end
+local function perfect_teleport(myHRP, targetPos)
+    if not myHRP then return end
+    myHRP.Velocity = Vector3.zero
+    myHRP.RotVelocity = Vector3.zero
+    myHRP.AssemblyLinearVelocity = Vector3.zero
+    myHRP.AssemblyAngularVelocity = Vector3.zero
+    myHRP.CFrame = CFrame.new(targetPos)
+    myHRP.Velocity = Vector3.zero
+    myHRP.RotVelocity = Vector3.zero
+    myHRP.AssemblyLinearVelocity = Vector3.zero
+    myHRP.AssemblyAngularVelocity = Vector3.zero
+end
+local function tp_to_sender()
+    local sender = Players:FindFirstChild(commandSender)
+    if sender and sender.Character and sender.Character:FindFirstChild("HumanoidRootPart") then
+        local pos = sender.Character.HumanoidRootPart.Position + SETTINGS.RETURN_OFFSET
+        local myHRP = LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+        if myHRP then perfect_teleport(myHRP, pos) end
+    end
+end
+local function playAnimation()
+    local char = LocalPlayer.Character
+    if not char then return end
+    local humanoid = char:FindFirstChildOfClass("Humanoid")
+    if not humanoid then return end
+    local animator = humanoid:FindFirstChildOfClass("Animator") or Instance.new("Animator", humanoid)
+    for _, t in ipairs(humanoid:GetPlayingAnimationTracks()) do t:Stop(0.1) end
+    if currentAnimTrack then currentAnimTrack:Stop(0.1) currentAnimTrack = nil end
+    if not savedAnimation.id then return end
+    local anim = Instance.new("Animation")
+    anim.AnimationId = "rbxassetid://" .. tostring(savedAnimation.id)
+    local success, track = pcall(function() return animator:LoadAnimation(anim) end)
+    if success and track then
+        track.Priority = Enum.AnimationPriority.Action4
+        track.Looped = true
+        track:Play(0.2)
+        track:AdjustSpeed(savedAnimation.speed or SETTINGS.DEFAULT_ANIM_SPEED)
+        currentAnimTrack = track
+    end
+end
+local function handleAnimationIdCommand(arg)
+    if arg == "" then return end
+    local id = tonumber(arg)
+    if not id then return end
+    savedAnimation.id = id
+    playAnimation()
+    save_settings()
+end
+local function handleAnimationSpeedCommand(arg)
+    if arg == "" then return end
+    local sp = tonumber(arg)
+    if not sp then return end
+    savedAnimation.speed = sp
+    if currentAnimTrack and currentAnimTrack.IsPlaying then
+        currentAnimTrack:AdjustSpeed(sp)
+    else
+        playAnimation()
+    end
+    save_settings()
+end
+local function handleAnimationOff()
+    savedAnimation.id = nil
+    savedAnimation.speed = nil
+    if currentAnimTrack then currentAnimTrack:Stop(0.2) currentAnimTrack = nil end
+    save_settings()
+end
+local function handleFixCommand()
+    lockedTarget = nil
+    downTarget = nil
+    loopkillTarget = nil
+    bringonly = false
+    cashdrop = false
+    auraFollow = false
+    stand_strafing = false
+    grabbed = false
+    commandSender = nil
+    lastHealth = {}
+    for _, c in pairs(connections) do pcall(function() c:Disconnect() end) end
+    connections = {}
+    pcall(juju.set_active_ragebot_target, nil)
+end
+local function handleBringCommand(targetName, senderName)
+    handleFixCommand()
+    setAutoStomp(false)
+    local target = find_player(targetName:lower())
+    if target then
+        lockedTarget = target
+        bringonly = true
+        commandSender = senderName
+        if say_logs_enabled then send_chat(string.format(saylogs.bring_log, target.Name)) end
+    end
+end
+local function handleDownCommand(targetName)
+    handleFixCommand()
+    setAutoStomp(false)
+    local target = find_player(targetName:lower())
+    if target then
+        downTarget = target
+        pcall(juju.set_active_ragebot_target, target)
+        if say_logs_enabled then send_chat(string.format(saylogs.down_log, target.Name)) end
+    end
+end
+local function handleLoopkillCommand(arg)
+    handleFixCommand()
+    arg = arg:lower()
+    if arg == "off" or arg == "stop" or arg == "" then
+        loopkillTarget = nil
+        pcall(juju.set_active_ragebot_target, nil)
+        task.wait(0.35)
+        stand_active = true
+        task.wait(0.4)
+        playAnimation()
+        if say_logs_enabled then send_chat(saylogs.loopkill_disable) end
+        return
+    end
+    local target = find_player(arg)
+    if target then
+        setAutoStomp(true)
+        loopkillTarget = target
+        pcall(juju.set_active_ragebot_target, target)
+        if say_logs_enabled then send_chat(string.format(saylogs.loopkill_enable, target.Name)) end
+    end
+end
+local function setupProtectRespawnHandler()
+    if not protectTarget then return end
+    local conn = protectTarget.CharacterAdded:Connect(function(newChar)
+        task.wait(0.6)
+        local hum = newChar:WaitForChild("Humanoid", 5)
+        if hum then
+            lastHealth[protectTarget.Name] = hum.Health
+            if say_logs_enabled then
+                send_chat(string.format(saylogs.protect_respawn, protectTarget.Name))
+            end
+        end
+    end)
+    table.insert(connections, conn)
+end
+local function handleProtectCommand(arg, mode)
+    mode = mode or 1
+    arg = arg:lower()
+    if arg == "off" or arg == "" or arg == "none" then
+        protectTarget = nil
+        protectMode = 1
+        lastHealth = {}
+        lastDamagerWhoHitMaster = nil
+        pcall(juju.set_active_ragebot_target, nil)
+        setAutoStomp(false)
+        if say_logs_enabled then
+            send_chat(saylogs.protect_disable)
+        end
+        return
+    end
+    local target = find_player(arg)
+    if not target then
+        if say_logs_enabled then send_chat(saylogs.player_not_found) end
+        return
+    end
+    protectTarget = target
+    protectMode = mode
+    if target.Character then
+        local hum = target.Character:FindFirstChildWhichIsA("Humanoid")
+        if hum then lastHealth[target.Name] = hum.Health end
+    end
+    setupProtectRespawnHandler()
+    if say_logs_enabled then
+        if mode == 1 then
+            send_chat(string.format(saylogs.protect_enable, target.Name))
+        else
+            send_chat(string.format(saylogs.protect2_enable, target.Name))
+        end
+    end
+end
+local function handleAuraCommand(arg)
+    handleFixCommand()
+    auraFollow = arg ~= "off"
+    auraAngle = 0
+end
+local function handleVoidCommand(arg)
+    local el = juju.find_element and (juju.find_element("anti", "void hide") or juju.find_element("misc", "void hide"))
+    if not el then return end
+    pcall(function() el:set_toggle(arg ~= "off") end)
+end
+local function handleFakeposCommand(arg)
+    if not juju or not juju.find_element then
+        if say_logs_enabled then
+            send_chat(saylogs.juju_missing)
+        end
+        return
+    end
+    local possible_names = {
+        "fake position", "fakeposition", "fake_position",
+        "fake pos", "fakepos", "fakeposition"
+    }
+  
+    local el = nil
+    for _, name in ipairs(possible_names) do
+        el = juju.find_element("anti", name)
+        if el then break end
+    end
+  
+    if not el then
+        for _, name in ipairs(possible_names) do
+            el = juju.find_element("misc", name)
+            if el then break end
+        end
+    end
+    if not el then
+        if say_logs_enabled then
+            send_chat(saylogs.fakepos_not_found)
+        end
+        warn("[Jujustand Debug] Fake Position element not found after search")
+        return
+    end
+    local state = (arg:lower() ~= "off") 
+    local success, err = pcall(function()
+        if el.set_toggle then
+            el:set_toggle(state)
+        elseif el.toggle then
+            el:toggle() 
+        end
+    end)
+    if success then
+        if say_logs_enabled then
+            send_chat(string.format(saylogs.fakepos_toggle, state and "ENABLED" or "DISABLED"))
+        end
+        warn("[Jujustand] Successfully set Fake Position to " .. tostring(state))
+    else
+        if say_logs_enabled then
+            send_chat(string.format(saylogs.fakepos_failed, tostring(err)))
+        end
+        warn("[Jujustand Error] Toggle failed: " .. tostring(err))
+    end
+end
+local function handleVelocityDesyncCommand(arg)
+    local el = juju.find_element and (
+        juju.find_element("anti", "velocity desync") or
+        juju.find_element("anti", "velocitydesync") or
+        juju.find_element("anti", "vel desync") or
+        juju.find_element("anti", "velocity")
+    )
+    if not el then
+        if say_logs_enabled then
+            send_chat(saylogs.velocity_not_found)
+        end
+        return
+    end
+    local state = (arg:lower() ~= "off")
+    pcall(function() el:set_toggle(state) end)
+    if say_logs_enabled then
+        send_chat(string.format(saylogs.velocity_toggle, state and "enabled" or "disabled"))
+    end
+end
+local function handleNetworkDesyncCommand(arg)
+    local el = juju.find_element and (
+        juju.find_element("anti", "network desync") or
+        juju.find_element("anti", "networkdesync") or
+        juju.find_element("anti", "net desync") or
+        juju.find_element("anti", "nd") 
+    )
+    if not el then
+        if say_logs_enabled then
+            send_chat(saylogs.nd_not_found)
+        end
+        return
+    end
+    local state = (arg:lower() ~= "off")
+    pcall(function() el:set_toggle(state) end)
+    if say_logs_enabled then
+        send_chat(string.format(saylogs.nd_toggle, state and "enabled" or "disabled"))
+    end
+end
+local function handleSenderRateCommand(arg)
+    local el = juju.find_element and (
+        juju.find_element("anti", "sender rate value") or
+        juju.find_element("anti", "senderrate") or
+        juju.find_element("anti", "sender rate") or
+        juju.find_element("anti", "send rate")
+    )
+    if not el then
+        if say_logs_enabled then
+            send_chat(saylogs.sender_not_found)
+        end
+        return
+    end
+    local state = (arg:lower() ~= "off")
+    pcall(function() el:set_toggle(state) end)
+    if say_logs_enabled then
+        send_chat(string.format(saylogs.sender_toggle, state and "enabled" or "disabled"))
+    end
+end
+local function handleDesyncCommand(arg)
+    local stateArg = (arg:lower() == "off") and "off" or ""
+    handleVoidCommand(stateArg)
+    handleFakeposCommand(stateArg)
+    handleNetworkDesyncCommand(stateArg)
+    handleSenderRateCommand(stateArg)
+    handleVelocityDesyncCommand(stateArg)
+    if say_logs_enabled then
+        send_chat(string.format(saylogs.desync_toggle, stateArg == "" and "enabled" or "disabled"))
+    end
+end
+local function handleAutoStompCommand(arg)
+    local state = (arg ~= "off")
+    setAutoStomp(state)
+    if say_logs_enabled then
+        send_chat(string.format(saylogs.stomp_toggle, state and "enabled" or "disabled"))
+    end
+end
+local function handleCashDropCommand(arg)
+    if arg == "off" then
+        cashdrop = false
+        if say_logs_enabled then send_chat(saylogs.cashdrop_disable) end
+        return
+    end
+    local num = tonumber(arg)
+    if num and num > 0 then
+        cashdrop_amount = tostring(num)
+        cashdrop = true
+        if say_logs_enabled then send_chat(string.format(saylogs.cashdrop_enable_amount, cashdrop_amount)) end
+    elseif arg == "" or arg == "on" then
+        cashdrop = not cashdrop
+        if cashdrop and say_logs_enabled then
+            send_chat(string.format(saylogs.cashdrop_enable, cashdrop_amount))
+        elseif not cashdrop and say_logs_enabled then
+            send_chat(saylogs.cashdrop_disable)
+        end
+    end
+end
+local function handleRejoinCommand()
+    if say_logs_enabled then send_chat(saylogs.rejoin) end
+    task.wait(0.5)
+    TeleportService:TeleportToPlaceInstance(game.PlaceId, game.JobId, LocalPlayer)
+end
+local function handleSayCommand(message)
+    if message and message ~= "" then send_chat(message) end
+end
+local function handleSayLogsCommand(arg)
+    say_logs_enabled = arg ~= "off"
+    save_settings()
+    if say_logs_enabled then
+        send_chat(saylogs.saylogs_enable)
+    else
+        send_chat(saylogs.saylogs_disable)
+    end
+end
+local function handleKillSayCommand(arg)
+    killsay_enabled = arg ~= "off"
+    if say_logs_enabled then
+        send_chat(killsay_enabled and saylogs.killsay_enable or saylogs.killsay_disable)
+    end
+end
+local function handleStandCommand()
+    handleFixCommand()
+    local auth = Players:FindFirstChild(SETTINGS.AUTHORIZED_USER)
+    if not auth or not auth.Character or not auth.Character:FindFirstChild("HumanoidRootPart") then return end
+    protectTarget = nil
+    lastHealth = {}
+    setAutoStomp(false)
+    pcall(juju.set_active_ragebot_target, nil)
+    stand_active = true
+    stand_strafing = false
+    task.wait(0.3)
+    playAnimation()
+    if say_logs_enabled then
+        send_chat(saylogs.stand_active)
+    end
+end
+local function handleStandStrafeCommand(arg)
+    if not stand_active then return end
+    stand_strafing = arg ~= "off"
+end
+local function handleStandPositionCommand(arg)
+    if not stand_active then return end
+    local pos = tonumber(arg)
+    if pos and pos >= 1 and pos <= 3 then 
+        stand_position = pos 
+        save_settings()
+    end
+end
+local function handleHereCommand(arg)
+    local distance = 5
+    if arg and arg ~= "" then
+        local num = tonumber(arg)
+        if num and num > 0 then distance = num end
+    end
+    local auth = Players:FindFirstChild(SETTINGS.AUTHORIZED_USER)
+    if not auth or not auth.Character or not auth.Character:FindFirstChild("HumanoidRootPart") then
+        if say_logs_enabled then send_chat(saylogs.master_not_found) end
+        return
+    end
+    local targetHRP = auth.Character.HumanoidRootPart
+    local myHRP = LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+    if not myHRP then return end
+    stand_active = false
+    stand_strafing = false
+    local frontPos = targetHRP.Position - (targetHRP.CFrame.LookVector * distance) + Vector3.new(0, 3, 0)
+    perfect_teleport(myHRP, frontPos)
+    myHRP.CFrame = CFrame.new(frontPos, frontPos + targetHRP.CFrame.LookVector)
+    if say_logs_enabled then
+        send_chat(string.format(saylogs.here_tp, tostring(distance), auth.Name))
+    end
+end
+local function handleResetCommand()
+    handleFixCommand()
+    auraFollow = false
+    stand_active = false
+    stand_strafing = false
+    cashdrop = false
+    lyrics_active = false
+    killsay_enabled = false
+    protectTarget = nil
+    loopkillTarget = nil
+    downTarget = nil
+    lockedTarget = nil
+    grabbed = false
+    for _, conn in pairs(connections) do
+        pcall(function() conn:Disconnect() end)
+    end
+    connections = {}
+    if grabConnection then
+        pcall(function() grabConnection:Disconnect() end)
+        grabConnection = nil
+    end
+    local char = LocalPlayer.Character
+    if char then
+        local hum = char:FindFirstChildWhichIsA("Humanoid")
+        if hum then hum.Health = 0 end
+    end
+    local respawnConn
+    respawnConn = LocalPlayer.CharacterAdded:Once(function(newChar)
+        task.wait(1.5)
+        stand_active = true
+        stand_strafing = false
+        if savedAnimation.id and savedAnimation.id > 0 then
+            pcall(playAnimation)
+        end
+        if say_logs_enabled then
+            send_chat(saylogs.reset_complete)
+        end
+        respawnConn:Disconnect()
+    end)
+    if say_logs_enabled then
+        send_chat(saylogs.reset_start)
+    end
+end
+task.spawn(function()
+    while true do
+        task.wait()
+        local myHRP = LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+        if not myHRP then continue end
+        if bringonly and lockedTarget and lockedTarget.Character then
+            local char = lockedTarget.Character
+            local body = char:FindFirstChild("BodyEffects")
+            local isKO = body and body:FindFirstChild("K.O") and body["K.O"].Value
+            if not isKO then
+                pcall(juju.set_active_ragebot_target, lockedTarget)
+            else
+                pcall(juju.set_active_ragebot_target, nil)
+            end
+            if grabConnection then grabConnection:Disconnect() grabConnection = nil end
+            grabConnection = char.ChildAdded:Connect(function(child)
+                if child.Name == "GRABBING_CONSTRAINT" then
+                    grabbed = true
+                    lockedTarget = nil
+                    bringonly = false
+                    if grabConnection then grabConnection:Disconnect() grabConnection = nil end
+                end
+            end)
+            if char:FindFirstChild("GRABBING_CONSTRAINT") then
+                grabbed = true
+                lockedTarget = nil
+                bringonly = false
+                if grabConnection then grabConnection:Disconnect() grabConnection = nil end
+            end
+            local upper = char:FindFirstChild("UpperTorso")
+            if not grabbed and isKO and upper then
+                local hover = upper.Position + SETTINGS.HOVER_OFFSET
+                perfect_teleport(myHRP, hover)
+                MainEvent:FireServer("Grabbing", false)
+                task.wait(SETTINGS.GRAB_SETTLE)
+            end
+            if grabbed then
+                tp_to_sender()
+                task.wait(SETTINGS.DROP_SETTLE)
+                MainEvent:FireServer("Grabbing", false)
+                task.wait(0.3)
+                MainEvent:FireServer("Grabbing", false)
+                grabbed = false
+                handleFixCommand()
+                task.wait(0.45)
+                stand_active = true
+                task.wait(0.4)
+                playAnimation()
+            end
+        end
+        if downTarget and downTarget.Character then
+            local char = downTarget.Character
+            local body = char:FindFirstChild("BodyEffects")
+            local isKO = body and body:FindFirstChild("K.O") and body["K.O"].Value
+            if not isKO then
+                pcall(juju.set_active_ragebot_target, downTarget)
+            else
+                pcall(juju.set_active_ragebot_target, nil)
+                downTarget = nil
+                task.wait(0.5)
+                stand_active = true
+                task.wait(0.4)
+                playAnimation()
+            end
+        end
+        if loopkillTarget and loopkillTarget.Character then
+            pcall(juju.set_active_ragebot_target, loopkillTarget)
+        end
+        if protectTarget then
+            if not protectTarget.Parent then
+                if say_logs_enabled then send_chat(string.format(saylogs.protect_left, protectTarget.Name)) end
+                protectTarget = nil
+                lastDamagerWhoHitMaster = nil
+                pcall(juju.set_active_ragebot_target, nil)
+                setAutoStomp(false)
+                continue
+            end
+            local char = protectTarget.Character
+            if not char then
+                setAutoStomp(false)
+                pcall(juju.set_active_ragebot_target, nil)
+                continue
+            end
+            local bodyEffects = char:FindFirstChild("BodyEffects")
+            local hum = char:FindFirstChildWhichIsA("Humanoid")
+            if not hum or not bodyEffects then
+                setAutoStomp(false)
+                pcall(juju.set_active_ragebot_target, nil)
+                continue
+            end
+            local currentHP = hum.Health
+            if not lastHealth[protectTarget.Name] then
+                lastHealth[protectTarget.Name] = currentHP
+            end
+            local prevHP = lastHealth[protectTarget.Name]
+            local dmg = prevHP - currentHP
+            lastHealth[protectTarget.Name] = currentHP
+            if dmg >= SETTINGS.PROTECT_DAMAGE_THRESHOLD then
+                task.wait(0.13)
+                local lastDamager = bodyEffects:FindFirstChild("LastDamager")
+                local attackerName = lastDamager and lastDamager.Value and tostring(lastDamager.Value) or nil
+                if attackerName and attackerName ~= "" and attackerName ~= LocalPlayer.Name then
+                    local attacker = Players:FindFirstChild(attackerName)
+                    if attacker and attacker ~= LocalPlayer then
+                        pcall(juju.set_active_ragebot_target, attacker)
+                        lastDamagerWhoHitMaster = attacker
+                        if say_logs_enabled then
+                            send_chat(string.format(saylogs.protect_hit, attackerName))
+                        end
+                    end
+                end
+            end
+            local shouldStomp = false
+            if lastDamagerWhoHitMaster and lastDamagerWhoHitMaster.Character then
+                local enemyChar = lastDamagerWhoHitMaster.Character
+                local enemyBody = enemyChar:FindFirstChild("BodyEffects")
+                local enemyKO = enemyBody and enemyBody:FindFirstChild("K.O") and enemyBody["K.O"].Value
+                if enemyKO then
+                    if protectMode == 1 then
+                        shouldStomp = true
+                    elseif protectMode == 2 then
+                        pcall(juju.set_active_ragebot_target, nil)
+                        lastDamagerWhoHitMaster = nil
+                    end
+                end
+                local enemyHum = enemyChar:FindFirstChildWhichIsA("Humanoid")
+                if enemyHum and enemyHum.Health <= 0 then
+                    lastDamagerWhoHitMaster = nil
+                end
+            end
+            if protectMode == 1 and shouldStomp ~= lastStompState then
+                setAutoStomp(shouldStomp)
+                lastStompState = shouldStomp
+                if say_logs_enabled then
+                    if shouldStomp then
+                        send_chat(saylogs.protect_stomp_on)
+                    else
+                        send_chat(saylogs.protect_stomp_off)
+                    end
+                end
+            end
+            local currentTarget = juju.get_active_ragebot_target and juju.get_active_ragebot_target()
+            if currentTarget and currentTarget ~= LocalPlayer then
+                local shouldUntarget = false
+                if juju.is_player_dead then
+                    if juju.is_player_dead(currentTarget) then shouldUntarget = true end
+                else
+                    local tChar = currentTarget.Character
+                    if tChar then
+                        local tHum = tChar:FindFirstChildWhichIsA("Humanoid")
+                        if tHum and tHum.Health <= 0 then shouldUntarget = true end
+                    else
+                        shouldUntarget = true
+                    end
+                end
+                if shouldUntarget then
+                    pcall(juju.set_active_ragebot_target, nil)
+                    if say_logs_enabled then send_chat(saylogs.protect_eliminated) end
+                end
+            end
+        end
+        if auraFollow then
+            local closest, minDist = nil, math.huge
+            for _, plr in Players:GetPlayers() do
+                if plr ~= LocalPlayer and is_whitelisted(plr) and plr.Character and plr.Character:FindFirstChild("HumanoidRootPart") then
+                    local dist = (myHRP.Position - plr.Character.HumanoidRootPart.Position).Magnitude
+                    if dist < minDist then
+                        minDist = dist
+                        closest = plr
+                    end
+                end
+            end
+            if closest and closest.Character and closest.Character:FindFirstChild("HumanoidRootPart") then
+                local tHRP = closest.Character.HumanoidRootPart
+                auraAngle = auraAngle + SETTINGS.AURA_SPEED * RunService.RenderStepped:Wait()
+                local x = math.cos(auraAngle) * SETTINGS.AURA_DISTANCE
+                local z = math.sin(auraAngle) * SETTINGS.AURA_DISTANCE
+                perfect_teleport(myHRP, tHRP.Position + Vector3.new(x, 0, z))
+            end
+        end
+        if stand_active then
+            local auth = Players:FindFirstChild(SETTINGS.AUTHORIZED_USER)
+            if auth and auth.Character and auth.Character:FindFirstChild("HumanoidRootPart") then
+                local targetHRP = auth.Character.HumanoidRootPart
+                local offset
+                if stand_strafing then
+                    local angle = tick() * 2
+                    local r = 5
+                    offset = targetHRP.Position + Vector3.new(math.cos(angle)*r, 5, math.sin(angle)*r)
+                else
+                    local right = targetHRP.CFrame.RightVector
+                    local look = targetHRP.CFrame.LookVector
+                    if stand_position == 1 then
+                        offset = targetHRP.Position - right * 5 + Vector3.new(0,5,0)
+                    elseif stand_position == 3 then
+                        offset = targetHRP.Position + right * 5 + Vector3.new(0,5,0)
+                    else
+                        offset = targetHRP.Position - look * 5 + Vector3.new(0,5,0)
+                    end
+                end
+                myHRP.CFrame = CFrame.new(offset) * targetHRP.CFrame.Rotation
+            end
+        end
+        if cashdrop and (tick() - last_cashdrop_time >= CASH_DROP_INTERVAL) then
+            MainEvent:FireServer("DropMoney", cashdrop_amount)
+            last_cashdrop_time = tick()
+        end
+    end
+end)
+task.spawn(function()
+    local stomp = juju.get_signal and juju.get_signal("on_stomp")
+    if not stomp then return end
+    stomp:Connect(function()
+        if not killsay_enabled then return end
+        task.wait(0.12)
+        if #killsay_words > 0 then
+            send_chat(killsay_words[math.random(1, #killsay_words)])
+        end
+    end)
+end)
+task.spawn(function()
+    while true do
+        task.wait()
+        if lyrics_active and #lyrics_lines > 0 then
+            send_chat(lyrics_lines[lyrics_index])
+            lyrics_index = lyrics_index + 1
+            if lyrics_index > #lyrics_lines then
+                lyrics_index = 1
+            end
+            task.wait(LYRICS_DELAY)
+        end
+    end
+end)
+local lastCommandTime = 0
+local function create_chat_connection()
+    local channel = TextChatService.TextChannels:FindFirstChild("RBXGeneral")
+    if not channel then return false end
+    local conn = channel.MessageReceived:Connect(function(msg)
+        local speaker = Players:GetPlayerByUserId(msg.TextSource and msg.TextSource.UserId or 0)
+        if not speaker or not is_authorized(speaker) then return end
+        local text = msg.Text
+        local lowerText = text:lower()
+        local escapedPrefix = patternEscape(COMMAND_PREFIX)
+        if not lowerText:find("^" .. escapedPrefix) then return end
+        if tick() - lastCommandTime < SETTINGS.COMMAND_COOLDOWN then return end
+        lastCommandTime = tick()
+        local args = {}
+        for w in text:gmatch("%S+") do table.insert(args, w) end
+        if #args < 1 then return end
+        local fullCmd = args[1]
+        local cmd = fullCmd:sub(#COMMAND_PREFIX + 1):lower()
+        local arg = table.concat(args, " ", 2)
+        if cmd == bring_cmd then
+            if arg == "stop" or arg == "cancel" or arg == "off" then
+                handleFixCommand()
+            elseif arg ~= "" then
+                handleBringCommand(arg, speaker.Name)
+            end
+        elseif cmd == down_cmd and arg ~= "" then
+            handleDownCommand(arg)
+        elseif cmd == loopkill_cmd then
+            handleLoopkillCommand(arg)
+        elseif cmd == protect_cmd then
+            handleProtectCommand(arg, 1)
+        elseif cmd == protect2_cmd then
+            handleProtectCommand(arg, 2)
+        elseif cmd == aura_cmd then
+            handleAuraCommand(arg)
+        elseif cmd == reset_cmd then
+            handleResetCommand()
+        elseif cmd == cashdrop_cmd then
+            handleCashDropCommand(arg)
+        elseif cmd == rejoin_cmd then
+            handleRejoinCommand()
+        elseif cmd == say_cmd and arg ~= "" then
+            handleSayCommand(arg)
+        elseif cmd == void_cmd then
+            handleVoidCommand(arg)
+        elseif cmd == fakepos_cmd or cmd == fakepos_alias then
+            handleFakeposCommand(arg)
+        elseif cmd == velocity_cmd or cmd == vel_cmd then
+            handleVelocityDesyncCommand(arg)
+        elseif cmd == nd_cmd then
+            handleNetworkDesyncCommand(arg)
+        elseif cmd == sender_cmd then
+            handleSenderRateCommand(arg)
+        elseif cmd == desync_cmd then
+            handleDesyncCommand(arg)
+        elseif cmd == animationid_cmd and arg ~= "" then
+            handleAnimationIdCommand(arg)
+        elseif cmd == animationsp_cmd and arg ~= "" then
+            handleAnimationSpeedCommand(arg)
+        elseif cmd == animation_cmd and arg == "off" then
+            handleAnimationOff()
+        elseif cmd == stand_cmd or cmd == stand_strafe_cmd then
+            if arg == "off" then
+                stand_active = false
+                stand_strafing = false
+            elseif arg == "" then
+                handleStandCommand()
+                if cmd == stand_strafe_cmd then handleStandStrafeCommand("on") end
+            end
+        elseif cmd == pos_cmd and arg ~= "" then
+            handleStandPositionCommand(arg)
+        elseif cmd == saylogs_cmd then
+            handleSayLogsCommand(arg)
+        elseif cmd == killsay_cmd then
+            handleKillSayCommand(arg)
+        elseif cmd == stomp_cmd then
+            handleAutoStompCommand(arg)
+        elseif cmd == here_cmd then
+            handleHereCommand(arg)
+        elseif cmd == reloadkillsay_cmd then
+            load_killsay_messages()
+            if say_logs_enabled then
+                send_chat(saylogs.killsay_reload)
+            end
+        elseif cmd == lyrics_cmd then
+            local subcmd = arg:lower()
+            if subcmd == "on" or subcmd == "" then
+                load_lyrics()
+                lyrics_index = 1
+                lyrics_active = true
+                if say_logs_enabled then
+                    send_chat(string.format(saylogs.lyrics_start, tostring(#lyrics_lines), tostring(LYRICS_DELAY)))
+                end
+            elseif subcmd == "off" then
+                lyrics_active = false
+                if say_logs_enabled then
+                    send_chat(saylogs.lyrics_stop)
+                end
+            elseif subcmd == "reload" then
+                load_lyrics()
+                if say_logs_enabled then
+                    send_chat(string.format(saylogs.lyrics_reload, tostring(#lyrics_lines)))
+                end
+            else
+                if say_logs_enabled then
+                    send_chat(string.format(saylogs.lyrics_usage, COMMAND_PREFIX))
+                end
+            end
+        elseif cmd == prefix_cmd then
+            local newPrefix = arg:match("^%s*(.-)%s*$")
+            if newPrefix == "" or newPrefix == nil then
+                if say_logs_enabled then
+                    send_chat(string.format(saylogs.prefix_current, COMMAND_PREFIX, COMMAND_PREFIX))
+                end
+                return
+            end
+            if #newPrefix > 8 then
+                if say_logs_enabled then
+                    send_chat(saylogs.prefix_too_long)
+                end
+                return
+            end
+            COMMAND_PREFIX = newPrefix
+            save_prefix()
+            if say_logs_enabled then
+                send_chat(string.format(saylogs.prefix_changed, COMMAND_PREFIX))
+            end
+        end
+    end)
+    connections.chat = conn
+    return true
+end
+task.spawn(function()
+    local attempts = 0
+    while attempts < 12 do
+        if create_chat_connection() then break end
+        attempts += 1
+        task.wait(2.5)
+    end
+end)
+task.spawn(function()
+    while true do
+        task.wait(math.random(4,6) + 0.3)
+        pcall(function() if connections.chat then connections.chat:Disconnect() end end)
+        create_chat_connection()
+    end
+end)
+task.spawn(function()
+    task.wait(0.7)
+    if load_settings() then
+        task.delay(0.5, playAnimation)
+    else
+        save_settings()
+    end
+end)
+task.spawn(function()
+    task.wait(0.5)
+    if load_prefix() then
+        warn("[Jujustand] Loaded custom prefix: " .. COMMAND_PREFIX)
+    else
+        warn("[Jujustand] Using default prefix: " .. COMMAND_PREFIX)
+        save_prefix()
+    end
+    load_commands()
+    load_saylogs()
+end)
+task.spawn(function()
+    task.wait(2)
+    if LocalPlayer.Character then
+        handleStandCommand()
+    end
+end)
+if juju.create_tab then
+    juju.create_tab("Control")
+    juju.create_section("sigma stand", 1, 1, 0)
+    local auth_input = juju.create_element("sigma stand", {
+        name = "Authorized User",
+        description = "Only this user can use commands"
+    }, {
+        textbox = { flag = "b_auth_name", default = SETTINGS.AUTHORIZED_USER }
+    })
+    juju.create_connection(auth_input.on_textbox_change, function(newName)
+        if newName and newName ~= "" then
+            SETTINGS.AUTHORIZED_USER = newName
+            whitelist[newName] = true
+        end
+    end)
+juju.create_element("sigma stand", {
+    name = "============================",
+    description = "z"
+}, {
+    label = { text = "breh" }
+})
+juju.create_element("sigma stand", {
+    name = ".st / .s",
+    description = "z"
+}, {
+    label = { text = "breh" }
+})
+
+juju.create_element("sigma stand", {
+    name = ".here (name) (studs)",
+    description = "z"
+}, {
+    label = { text = "breh" }
+})
+
+juju.create_element("sigma stand", {
+    name = ".pos 1/2/3",
+    description = "z"
+}, {
+    label = { text = "breh" }
+})
+
+juju.create_element("sigma stand", {
+    name = ".loopkill",
+    description = "z"
+}, {
+    label = { text = "breh" }
+})
+juju.create_element("sigma stand", {
+    name = ".down (name)",
+    description = "z"
+}, {
+    label = { text = "breh" }
+})
+
+juju.create_element("sigma stand", {
+    name = ".b (name)",
+    description = "z"
+}, {
+    label = { text = "breh" }
+})
+
+juju.create_element("sigma stand", {
+    name = ".say (anything)",
+    description = "z"
+}, {
+    label = { text = "breh" }
+})
+
+juju.create_element("sigma stand", {
+    name = ".cashdrop (amount)",
+    description = "z"
+}, {
+    label = { text = "breh" }
+})
+
+juju.create_element("sigma stand", {
+    name = ".animationsp (speed)",
+    description = "z"
+}, {
+    label = { text = "breh" }
+})
+
+juju.create_element("sigma stand", {
+    name = ".animationid (id)",
+    description = "z"
+}, {
+    label = { text = "breh" }
+})
+
+juju.create_element("sigma stand", {
+    name = ".void",
+    description = "z"
+}, {
+    label = { text = "breh" }
+})
+
+juju.create_element("sigma stand", {
+    name = ".fakepos",
+    description = "z"
+}, {
+    label = { text = "breh" }
+})
+
+juju.create_element("sigma stand", {
+    name = ".nd",
+    description = "z"
+}, {
+    label = { text = "breh" }
+})
+
+juju.create_element("sigma stand", {
+    name = ".velocity",
+    description = "z"
+}, {
+    label = { text = "breh" }
+})
+
+juju.create_element("sigma stand", {
+    name = ".desync",
+    description = "z"
+}, {
+    label = { text = "breh" }
+})
+
+juju.create_element("sigma stand", {
+    name = ".reset",
+    description = "z"
+}, {
+    label = { text = "breh" }
+})
+
+juju.create_element("sigma stand", {
+    name = ".prefix",
+    description = "z"
+}, {
+    label = { text = "breh" }
+})
+
+juju.create_element("sigma stand", {
+    name = ".stomp",
+    description = "z"
+}, {
+    label = { text = "breh" }
+})
+
+juju.create_element("sigma stand", {
+    name = ".killsay",
+    description = "z"
+}, {
+    label = { text = "breh" }
+})
+
+juju.create_element("sigma stand", {
+    name = ".lyrics",
+    description = "z"
+}, {
+    label = { text = "breh" }
+})
+
+juju.create_element("sigma stand", {
+    name = ".rejoin",
+    description = "z"
+}, {
+    label = { text = "breh" }
+})
+
+juju.create_element("sigma stand", {
+    name = ".protect/protect2 (user)",
+    description = "z"
+}, {
+    label = { text = "breh" }
+})
+
+end
+task.spawn(function()
+    while true do
+        task.wait(2.5)
+        local char = LocalPlayer.Character
+        if not char then continue end
+        local hum = char:FindFirstChildWhichIsA("Humanoid")
+        if not hum then continue end
+        if savedAnimation.id and savedAnimation.id > 0 then
+            local playing = false
+            for _, track in hum:GetPlayingAnimationTracks() do
+                if track.Animation.AnimationId == "rbxassetid://" .. tostring(savedAnimation.id) then
+                    playing = true
+                    break
+                end
+            end
+            if not playing then
+                pcall(playAnimation)
+            end
+        end
+    end
+end)
+LocalPlayer.CharacterAdded:Connect(function(newChar)
+    task.wait(1.2)
+    if savedAnimation.id and savedAnimation.id > 0 then
+        pcall(playAnimation)
+    end
+end)
